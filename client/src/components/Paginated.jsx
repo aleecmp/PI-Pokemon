@@ -8,9 +8,9 @@ const Paginated = ({ pokemonsPerPage, allPokemons, paginated }) => {
   }
   return (
     <nav>
-      <ul className="paginated">
+      <ul>
         {pageNumbers?.map((number) => (
-          <li className="number" key={number}>
+          <li key={number}>
             <a onClick={() => paginated(number)}>{number}</a>
           </li>
         ))}

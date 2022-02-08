@@ -2,19 +2,19 @@ import axios from "axios";
 
 export const GET_ALL_POKEMONS = "GET_ALL_POKEMONS";
 export const FILTER_POKEMONS_BY_TYPE = "FILTER_POKEMONS_BY_TYPE";
-export const FILTER_CREATED = "FILTER_CREATED";
+export const FILTER_BY_CREATED = "FILTER_BY_CREATED";
 export const ORDER_BY_NAME = "ORDER_BY_NAME";
 export const GET_NAME_POKEMONS = "GET_NAME_POKEMONS";
 export const GET_TYPES = "GET_TYPES";
 export const POST_POKEMON = "POST_POKEMON";
-export const GET_DETAIL = "GET_DETAIL";
+export const GET_DETAILS = "GET_DETAILS";
 
 // get all poke from backend
 export const getAllPokemons = () => {
   return async (dispatch) => {
     try {
       const res = await axios.get("http://localhost:3001/pokemons");
-      dispatch({
+      return dispatch({
         type: GET_ALL_POKEMONS,
         payload: res.data,
       });
@@ -28,7 +28,7 @@ export const getTypes = () => {
   return async (dispatch) => {
     try {
       const res = await axios.get("http://localhost:3001/types");
-      dispatch({
+      return dispatch({
         type: GET_TYPES,
         payload: res.data,
       });
@@ -44,7 +44,7 @@ export const getNamePokemons = (name) => {
       const res = await axios.get(
         `http://localhost:3001/pokemons?name=${name}`
       );
-      dispatch({
+      return dispatch({
         type: GET_NAME_POKEMONS,
         payload: res.data,
       });
@@ -61,9 +61,9 @@ export const filterPokemonsByType = (payload) => {
   };
 };
 
-export const filterCreated = (payload) => {
+export const filterByCreated = (payload) => {
   return {
-    type: FILTER_CREATED,
+    type: FILTER_BY_CREATED,
     payload,
   };
 };
@@ -86,12 +86,12 @@ export const postPokemon = (payload) => {
   };
 };
 
-export const getDetail = (id) => {
+export const getDetails = (id) => {
   return async (dispatch) => {
     try {
       const res = await axios.get(`http://localhost:3001/pokemons/${id}`);
-      dispatch({
-        type: GET_DETAIL,
+      return dispatch({
+        type: GET_DETAILS,
         payload: res.data,
       });
     } catch (err) {

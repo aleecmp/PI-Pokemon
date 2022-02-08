@@ -41,7 +41,7 @@ const PokemonCreate = () => {
     speed: "",
     weight: "",
     height: "",
-    type: [],
+    types: [],
   });
 
   const handleChange = (e) => {
@@ -61,7 +61,7 @@ const PokemonCreate = () => {
   const handleSelect = (e) => {
     setInput({
       ...input,
-      type: [...input.type, e.target.value],
+      types: [...input.types, e.target.value],
     });
   };
 
@@ -77,7 +77,7 @@ const PokemonCreate = () => {
       speed: "",
       weight: "",
       height: "",
-      type: [],
+      types: [],
     });
     history.push("/home");
   };
@@ -85,13 +85,13 @@ const PokemonCreate = () => {
   const handleDelete = (e) => {
     setInput({
       ...input,
-      type: input.type.filter((type) => type !== e.target.value),
+      types: input.types.filter((iTypes) => iTypes !== e),
     });
   };
 
   useEffect(() => {
     dispatch(getTypes());
-  }, []);
+  }, [dispatch]);
 
   return (
     <div>
@@ -201,16 +201,18 @@ const PokemonCreate = () => {
           {errors.height && <p>{errors.height}</p>}
         </div>
         <select onChange={(e) => handleSelect(e)}>
-          {types.map((type) => (
-            <option value={type.name}>{type.name}</option>
+          {types?.map((i) => (
+            <option key={i.id} value={i.name}>
+              {i.name}
+            </option>
           ))}
+          <ul>
+            <li>{input.types.map((i) => i.name + ", ")}</li>
+          </ul>
         </select>
-        <ul>
-          <li>{input.type.map((e) => e + " ,")}</li>
-        </ul>
-        <button type="submit">Crear Pokemón</button>
+        <button type="submit">Create Pokemon</button>
       </form>
-      {input.type.map((e) => (
+      {input.types.map((e) => (
         <div>
           <p>{e}</p>
           <button onClick={() => handleDelete(e)}>X</button>

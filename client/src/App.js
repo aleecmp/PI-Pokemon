@@ -3,7 +3,7 @@ import { Switch, Route, BrowserRouter } from "react-router-dom";
 import LandingPage from "./components/LandingPage";
 import Home from "./components/Home";
 import PokemonCreate from "./components/PokemonCreate";
-import PokemonDetail from "./components/PokemonDetail";
+import PokemonDetails from "./components/PokemonDetails";
 
 function App() {
   return (
@@ -11,9 +11,9 @@ function App() {
       <div className="App">
         <Switch>
           <Route exact path="/" component={LandingPage} />
-          <Route path="/home" component={Home} />
-          <Route path="/pokemon" component={PokemonCreate} />
-          <Route path="/home/:id" component={PokemonDetail} />
+          <Route exact path="/home" component={Home} />
+          <Route exact path="/details/:id" component={PokemonDetails} />
+          <Route exact path="/pokemon" component={PokemonCreate} />
         </Switch>
       </div>
     </BrowserRouter>

@@ -36,7 +36,7 @@ const getApiInfo = async () => {
           speed: e.stats[5].base_stat,
           height: e.height,
           weight: e.weight,
-          sprite: e.sprites.other.dream_world.front_default,
+          sprite: e.sprites.other["official-artwork"].front_default,
           types:
             e.types.length < 2
               ? [{ name: e.types[0].type.name }]
@@ -144,7 +144,7 @@ router.post("/pokemon", async (req, res) => {
     createdInDb,
   });
 
-  let typeDb = await Type.findAll({ where: { name: types } }); // falla
+  let typeDb = await Type.findAll({ where: { name: types } });
 
   pokemonCreated.addType(typeDb);
   return res.status(200).send("Pokemon created");

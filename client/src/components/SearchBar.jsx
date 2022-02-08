@@ -10,19 +10,19 @@ const SearchBar = () => {
   const handleInputChange = (e) => {
     e.preventDefault();
     setName(e.target.value);
-    console.log(name);
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
     dispatch(getNamePokemons(name));
+    setName("");
   };
 
   return (
     <div>
       <input
         type="text"
-        placeholder="Search..."
+        placeholder="Pokemon name..."
         onChange={(e) => {
           handleInputChange(e);
         }}
@@ -33,7 +33,7 @@ const SearchBar = () => {
           handleSubmit(e);
         }}
       >
-        Buscar
+        Search
       </button>
     </div>
   );
