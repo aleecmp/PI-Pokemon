@@ -13,7 +13,7 @@ const PokemonCard = (props) => {
       <img src={props.sprite} alt={props.name} />
 
       {props.types?.map((e) => (
-        <h5>{e}</h5>
+        <h5 key={e}>{e}</h5>
       ))}
     </div>
   );

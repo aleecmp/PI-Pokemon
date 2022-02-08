@@ -110,9 +110,10 @@ const Home = () => {
         <div>
           {currentPokemons?.map((e) => {
             return (
-              <div key={e.id}>
-                <Link to={"/pokemons" + e.id} />
+              <div>
                 <PokemonCard
+                  key={e.id}
+                  id={e.id}
                   name={e.name}
                   types={e.types.map((e) => `[${e.name}]`)}
                   sprite={e.sprite}

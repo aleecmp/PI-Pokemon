@@ -1,6 +1,6 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getDetails } from "../redux/actions";
+import { getDetails } from "../redux/actions/";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
@@ -12,10 +12,9 @@ const PokemonDetails = (props) => {
   const myPokemon = useSelector((state) => state.details);
 
   useEffect(() => {
-    setLoading(true);
     dispatch(getDetails(id));
-    setLoading(false);
-  }, [id, dispatch]);
+    setLoading(true);
+  }, [id]);
   console.log(myPokemon);
 
   return (
@@ -30,7 +29,7 @@ const PokemonDetails = (props) => {
                 <img src={myPokemon[0].sprite} alt={myPokemon[0].name}></img>
                 <hr></hr>
                 <h1>Types</h1>
-                {myPokemon[0].types.map((e) => e.name + ", ")}
+                {myPokemon[0].types.map((e) => e.name + " ")}
                 <hr></hr>
                 <div>
                   <h1>Statistics</h1>
@@ -51,7 +50,7 @@ const PokemonDetails = (props) => {
       ) : (
         <div>Loading...</div>
       )}
-      <Link to="/home">
+      <Link to="/pokemons">
         <button>Back</button>
       </Link>
     </div>

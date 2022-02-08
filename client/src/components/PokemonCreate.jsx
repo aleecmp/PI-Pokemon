@@ -30,7 +30,9 @@ const validate = (input) => {
 const PokemonCreate = () => {
   const dispatch = useDispatch();
   const history = useHistory();
-  const types = useSelector((state) => state.types);
+  const { types } = useSelector((state) => ({
+    types: state.types,
+  }));
   const [errors, setErrors] = useState({});
 
   const [input, setInput] = useState({
@@ -66,9 +68,11 @@ const PokemonCreate = () => {
   };
 
   const handleSubmit = (e) => {
-    e.prevenDefault();
+    e.preventDefault();
+    console.log(input);
     dispatch(postPokemon(input));
     alert("Pokemon created successfully");
+    history.push("/pokemons");
     setInput({
       name: "",
       hp: "",
@@ -79,7 +83,6 @@ const PokemonCreate = () => {
       height: "",
       types: [],
     });
-    history.push("/home");
   };
 
   const handleDelete = (e) => {
@@ -95,7 +98,7 @@ const PokemonCreate = () => {
 
   return (
     <div>
-      <Link to="/home">
+      <Link to="/pokemons">
         <button>Back</button>
       </Link>
       <h1>Create Pokemon!</h1>
@@ -200,24 +203,54 @@ const PokemonCreate = () => {
           />
           {errors.height && <p>{errors.height}</p>}
         </div>
-        <select onChange={(e) => handleSelect(e)}>
+
+        <div>
+          <select
+            value="DEFAULT"
+            onChange={(e) => {
+              handleSelect(e);
+            }}
+          >
+            <option value="DEFAULT">TYPES</option>
+            {types?.map((e, i) => {
+              return (
+                <option key={i} value={e.name}>
+                  {e.name}
+                </option>
+              );
+            })}
+          </select>
+          <button type="submit">Create Now!</button>
+        </div>
+      </form>
+      <div>
+        {input.types?.map((typeIn, i) => (
+          <div key={i}>
+            <p>{typeIn}</p>
+            <button onClick={() => handleDelete(typeIn)}>X</button>
+          </div>
+        ))}
+      </div>
+
+      {/* <select value="DEFAULT" onChange={(e) => handleSelect(e)}>
+          <option value="DEFAULT">Types</option>
+
           {types?.map((i) => (
-            <option key={i.id} value={i.name}>
+            <option key={i.name} value={i.name}>
               {i.name}
             </option>
           ))}
           <ul>
-            <li>{input.types.map((i) => i.name + ", ")}</li>
+            <li>{input.types.map((i) => i + ", ")}</li>
           </ul>
         </select>
         <button type="submit">Create Pokemon</button>
-      </form>
-      {input.types.map((e) => (
-        <div>
-          <p>{e}</p>
-          <button onClick={() => handleDelete(e)}>X</button>
-        </div>
-      ))}
+        {input.types.map((e) => (
+          <div>
+            <p>{e}</p>
+            <button onClick={() => handleDelete(e)}>X</button>
+          </div>
+        ))} */}
     </div>
   );
 };
