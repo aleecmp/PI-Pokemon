@@ -6,11 +6,11 @@ import {
   filterPokemonsByType,
   filterByCreated,
   orderByName,
-} from "../redux/actions";
+} from "../../redux/actions";
 import { Link } from "react-router-dom";
-import PokemonCard from "./PokemonCard";
-import Paginated from "./Paginated";
-import SearchBar from "./SearchBar";
+import PokemonCard from "../PokemonCard/PokemonCard";
+import Paginated from "../Paginated/Paginated";
+import SearchBar from "../SearchBar/SearchBar";
 
 const Home = () => {
   const dispatch = useDispatch();

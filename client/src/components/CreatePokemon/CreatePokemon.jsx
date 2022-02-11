@@ -1,7 +1,7 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { postPokemon, getTypes } from "../redux/actions";
+import { postPokemon, getTypes } from "../../redux/actions";
 import { Link, useHistory } from "react-router-dom";
 
 const validate = (input) => {
@@ -27,7 +27,7 @@ const validate = (input) => {
   return errors;
 };
 
-const PokemonCreate = () => {
+const CreatePokemon = () => {
   const dispatch = useDispatch();
   const history = useHistory();
   const { types } = useSelector((state) => ({
@@ -255,4 +255,4 @@ const PokemonCreate = () => {
   );
 };
 
-export default PokemonCreate;
+export default CreatePokemon;

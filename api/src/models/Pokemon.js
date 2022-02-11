@@ -5,6 +5,7 @@ module.exports = (sequelize) => {
   // defino el modelo
   sequelize.define("pokemon", {
     id: {
+      // Universally Unique Identifiers
       type: DataTypes.UUID,
       defaultValue: DataTypes.UUIDV4,
       allowNull: false,
@@ -44,6 +45,7 @@ module.exports = (sequelize) => {
       defaultValue:
         "https://imagenpng.com/wp-content/uploads/2016/09/Pokebola-pokeball-png-0.png",
     },
+    // creo otro id para encontrar los pokemons creados en la base de datos
     createdInDb: {
       type: DataTypes.BOOLEAN,
       allowNull: false,
