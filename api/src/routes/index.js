@@ -110,6 +110,8 @@ router.get("/types", async (req, res) => {
   }
 });
 
+// post
+
 router.post("/pokemon", async (req, res) => {
   let {
     name,
