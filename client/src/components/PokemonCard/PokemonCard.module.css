@@ -1,30 +1,38 @@
-.allCards {
-  margin-top: 2px;
-  padding-top: 2px;
-}
 .pokeCard {
-  border-radius: 10px;
-  border: 2px solid #000000;
-  background-color: #e2c834;
-  margin: 30px;
-  opacity: 0.8;
-  width: 18rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 25rem;
+  width: 20rem;
+  background-color: rgb(219, 175, 78);
+  border-radius: 2rem;
+  border: outset 5px rgb(121, 104, 7);
 }
 
 .pokeCard:hover {
-  background: #4939db;
-  border-radius: 10px;
-  opacity: 0.7;
+  border: outset 5px rgba(131, 124, 23, 0.582);
+  background-color: rgba(223, 247, 14, 0.568);
 }
 
 .pokeSprite {
   width: 185px;
   height: 185px;
-  border-radius: 5px;
-  opacity: 1;
-  margin-top: 0px;
   -moz-border-radius: 20px;
-  border-radius: 20px;
+  border-radius: 6rem;
   border-color: rgb(255, 255, 255);
   background-color: rgb(255, 255, 255);
+}
+.name {
+  margin-top: -20px;
+  font-size: 1rem;
+  color: black;
+  font-style: italic;
+  text-decoration: none;
+}
+
+.types {
+  margin: 2rem;
+  font-size: 1.3rem;
+  font-style: oblique;
 }
