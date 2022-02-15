@@ -1,0 +1,25 @@
+.paginated {
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  list-style-type: none;
+}
+
+.number {
+  align-items: center;
+  background-color: #f5f5f5;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  display: flex;
+  justify-content: center;
+  margin: 0 5px;
+  padding: 5px;
+  cursor: pointer;
+}
+
+.number:hover {
+  background: #f00606;
+  border-radius: 3px;
+  opacity: 0.8;
+}
