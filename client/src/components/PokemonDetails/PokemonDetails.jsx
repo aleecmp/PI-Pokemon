@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { getDetails } from "../../redux/actions";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import styles from "./PokemonDetails.module.css";
 
 const PokemonDetails = (props) => {
   console.log(props);
@@ -18,9 +19,9 @@ const PokemonDetails = (props) => {
   console.log(myPokemon);
 
   return (
-    <div>
+    <div className={styles.details}>
       {loading ? (
-        <div>
+        <div className={styles.pokeDetail}>
           {myPokemon.length > 0 ? (
             <div>
               <h6>{myPokemon[0].id}</h6>

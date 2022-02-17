@@ -1,0 +1,13 @@
+.details {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.pokeDetail {
+  margin: 1rem;
+  width: 50rem;
+  border-radius: 2rem;
+  border: 5px solid #8b7806;
+}
