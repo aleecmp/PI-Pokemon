@@ -6,6 +6,7 @@ import { FILTER_POKEMONS_BY_TYPE } from "../actions";
 import { FILTER_BY_CREATED } from "../actions";
 import { ORDER_BY_NAME } from "../actions";
 import { POST_POKEMON } from "../actions";
+import { ORDER_BY_ATTACK } from "../actions";
 
 const initialState = {
   pokemons: [],
@@ -64,6 +65,31 @@ const rootReducer = (state = initialState, action) => {
       return {
         ...state,
         pokemons: sortedPokemons,
+      };
+    case ORDER_BY_ATTACK:
+      let sortedPokemonsByAttack =
+        action.payload === "Asc"
+          ? state.pokemons.sort(function (a, b) {
+              if (a.attack > b.attack) {
+                return 1;
+              }
+              if (b.attack > a.attack) {
+                return -1;
+              }
+              return 0;
+            })
+          : state.pokemons.sort(function (a, b) {
+              if (a.attack > b.attack) {
+                return -1;
+              }
+              if (b.attack > a.attack) {
+                return 1;
+              }
+              return 0;
+            });
+      return {
+        ...state,
+        pokemons: sortedPokemonsByAttack,
       };
 
     case GET_TYPES:

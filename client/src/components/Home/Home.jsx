@@ -6,6 +6,7 @@ import {
   filterPokemonsByType,
   filterByCreated,
   orderByName,
+  orderByAttack,
 } from "../../redux/actions";
 import { Link } from "react-router-dom";
 import PokemonCard from "../PokemonCard/PokemonCard";
@@ -21,6 +22,8 @@ const Home = () => {
   const [pokemonsPerPage, setPokemonsPerPage] = useState(12);
 
   const [order, setOrder] = useState("");
+
+  const [attack, setAttack] = useState("");
 
   const indexOfLastPokemon = currentPage * pokemonsPerPage;
   const indexOfFirstPokemon = indexOfLastPokemon - pokemonsPerPage;
@@ -56,6 +59,13 @@ const Home = () => {
     dispatch(orderByName(e.target.value));
     setCurrentPage(1);
     setOrder(`Sorted ${e.target.value}`);
+  };
+
+  let handleOrderByAttack = (e) => {
+    e.preventDefault();
+    dispatch(orderByAttack(e.target.value));
+    setCurrentPage(1);
+    setAttack(`Ordenado ${e.target.value}`);
   };
 
   return (
@@ -100,6 +110,10 @@ const Home = () => {
         <select onChange={(e) => handleSort(e)}>
           <option value="Desc">A-Z</option>
           <option value="Asc">Z-A</option>
+        </select>
+        <select onChange={(e) => handleOrderByAttack(e)}>
+          <option value="asc">Power Min</option>
+          <option value="desc">Power Max</option>
         </select>
         <Paginated
           pokemonsPerPage={pokemonsPerPage}

@@ -8,6 +8,7 @@ export const GET_NAME_POKEMONS = "GET_NAME_POKEMONS";
 export const GET_TYPES = "GET_TYPES";
 export const POST_POKEMON = "POST_POKEMON";
 export const GET_DETAILS = "GET_DETAILS";
+export const ORDER_BY_ATTACK = "ORDER_BY_ATTACK";
 
 // get all poke from backend
 export const getAllPokemons = () => {
@@ -71,6 +72,13 @@ export const filterByCreated = (payload) => {
 export const orderByName = (payload) => {
   return {
     type: ORDER_BY_NAME,
+    payload,
+  };
+};
+
+export const orderByAttack = (payload) => {
+  return {
+    type: ORDER_BY_ATTACK,
     payload,
   };
 };
