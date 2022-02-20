@@ -112,8 +112,8 @@ const Home = () => {
           <option value="Asc">Z-A</option>
         </select>
         <select onChange={(e) => handleOrderByAttack(e)}>
-          <option value="asc">Power Min</option>
-          <option value="desc">Power Max</option>
+          <option value="Asc">Power Min</option>
+          <option value="Desc">Power Max</option>
         </select>
         <Paginated
           pokemonsPerPage={pokemonsPerPage}
