@@ -7,6 +7,7 @@ import { FILTER_BY_CREATED } from "../actions";
 import { ORDER_BY_NAME } from "../actions";
 import { POST_POKEMON } from "../actions";
 import { ORDER_BY_ATTACK } from "../actions";
+import { CLEAN_DETAILS } from "../actions";
 
 const initialState = {
   pokemons: [],
@@ -114,6 +115,11 @@ const rootReducer = (state = initialState, action) => {
       };
 
     case GET_DETAILS:
+      return {
+        ...state,
+        details: action.payload,
+      };
+    case CLEAN_DETAILS:
       return {
         ...state,
         details: action.payload,

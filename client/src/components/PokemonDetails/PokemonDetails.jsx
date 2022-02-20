@@ -1,26 +1,27 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getDetails } from "../../redux/actions";
-import { useEffect, useState } from "react";
+import { getDetails, cleanDetails } from "../../redux/actions";
+import { useEffect } from "react";
 import { Link } from "react-router-dom";
+import Loading from "../Loading/Loading";
 import styles from "./PokemonDetails.module.css";
 
 const PokemonDetails = (props) => {
   console.log(props);
-  const [loading, setLoading] = useState(false);
+
   const { id } = props.match.params;
   const dispatch = useDispatch();
   const myPokemon = useSelector((state) => state.details);
 
   useEffect(() => {
     dispatch(getDetails(id));
-    setLoading(true);
-  }, [id]);
+    return () => dispatch(cleanDetails());
+  }, [id, dispatch]);
   console.log(myPokemon);
 
   return (
     <div className={styles.details}>
-      {loading ? (
+      {<Loading /> ? (
         <div className={styles.pokeDetail}>
           {myPokemon.length > 0 ? (
             <div>
@@ -45,11 +46,11 @@ const PokemonDetails = (props) => {
               </div>
             </div>
           ) : (
-            <div>Loading...</div>
+            <Loading />
           )}
         </div>
       ) : (
-        <div>Loading...</div>
+        <Loading />
       )}
       <Link to="/pokemons">
         <button>Back</button>

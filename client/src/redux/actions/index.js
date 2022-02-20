@@ -9,6 +9,7 @@ export const GET_TYPES = "GET_TYPES";
 export const POST_POKEMON = "POST_POKEMON";
 export const GET_DETAILS = "GET_DETAILS";
 export const ORDER_BY_ATTACK = "ORDER_BY_ATTACK";
+export const CLEAN_DETAILS = "CLEAN_DETAILS";
 
 // get all poke from backend
 export const getAllPokemons = () => {
@@ -104,5 +105,12 @@ export const getDetails = (id) => {
     } catch (err) {
       console.log(err);
     }
+  };
+};
+
+export const cleanDetails = () => {
+  return {
+    type: CLEAN_DETAILS,
+    payload: {},
   };
 };
