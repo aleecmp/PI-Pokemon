@@ -44,7 +44,7 @@ const rootReducer = (state = initialState, action) => {
 
     case ORDER_BY_NAME:
       let sortedPokemons =
-        action.payload === "Desc"
+        action.payload === "Asc"
           ? state.pokemons.sort(function (a, b) {
               if (a.name > b.name) {
                 return 1;

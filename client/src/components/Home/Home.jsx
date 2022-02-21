@@ -70,15 +70,8 @@ const Home = () => {
 
   return (
     <div>
-      <Link to="/pokemon"> Create Pokémon</Link>
-      <button
-        onClick={(e) => {
-          handleClick(e);
-        }}
-      >
-        Reset
-      </button>
       <div>
+        <label>By Types</label>
         <select onChange={(e) => handleFilterType(e)}>
           <option value="all">All</option>
           <option value="normal">Normal</option>
@@ -102,24 +95,41 @@ const Home = () => {
           <option value="unknown">Unknown</option>
           <option value="shadow">Shadow</option>
         </select>
+        <label>By Origin</label>
         <select onChange={(e) => handleFilterCreated(e)}>
           <option value="All">All</option>
           <option value="Created">Created</option>
           <option value="api">Existing</option>
         </select>
+        <label>By Alphabetic Order</label>
         <select onChange={(e) => handleSort(e)}>
-          <option value="Desc">A-Z</option>
-          <option value="Asc">Z-A</option>
+          <option value="None" hidden>
+            None
+          </option>
+          <option value="Asc">A-Z</option>
+          <option value="Desc">Z-A</option>
         </select>
+        <label>By Power Order</label>
         <select onChange={(e) => handleOrderByAttack(e)}>
+          <option value="None" hidden>
+            None
+          </option>
           <option value="Asc">Power Min</option>
           <option value="Desc">Power Max</option>
         </select>
+        <button
+          onClick={(e) => {
+            handleClick(e);
+          }}
+        >
+          Reset
+        </button>
         <Paginated
           pokemonsPerPage={pokemonsPerPage}
           allPokemons={allPokemons.length}
           paginated={paginated}
         />
+        <Link to="/pokemon"> Create Pokémon</Link>
         <SearchBar />
         <div>
           {currentPokemons?.map((e) => {
