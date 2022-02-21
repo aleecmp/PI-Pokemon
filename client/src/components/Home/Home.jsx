@@ -70,6 +70,9 @@ const Home = () => {
 
   return (
     <div>
+      <button>
+        <Link to="/">Landing</Link>
+      </button>
       <div>
         <label>By Types</label>
         <select onChange={(e) => handleFilterType(e)}>
