@@ -5,6 +5,7 @@ import styles from "./PokemonCard.module.css";
 const PokemonCard = (props) => {
   console.log(props.id);
   console.log(props.name);
+  console.log(props.id.toString().length);
 
   return (
     <div className={styles.pokeCard}>
@@ -13,6 +14,11 @@ const PokemonCard = (props) => {
       </Link>
 
       <div>
+        <div>
+          {props.id.toString().length === 1
+            ? `N.° 00${props.id}`
+            : `N.° 0${props.id}`}
+        </div>
         <div>
           <img
             className={styles.pokeSprite}
