@@ -12,6 +12,7 @@ import { Link } from "react-router-dom";
 import PokemonCard from "../PokemonCard/PokemonCard";
 import Paginated from "../Paginated/Paginated";
 import SearchBar from "../SearchBar/SearchBar";
+import styles from "./Home.module.css";
 
 const Home = () => {
   const dispatch = useDispatch();
@@ -134,7 +135,7 @@ const Home = () => {
         />
         <Link to="/pokemon"> Create Pokémon</Link>
         <SearchBar />
-        <div>
+        <div className={styles.cards}>
           {currentPokemons?.map((e) => {
             return (
               <div>
